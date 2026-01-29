@@ -259,19 +259,47 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
     // Don't prevent formatting shortcuts
     const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
     const modKey = isMac ? e.metaKey : e.ctrlKey;
-    
+
     if (modKey && ['b', 'i', 'u', 'e', 'k', 's', '\\'].includes(e.key.toLowerCase())) {
       return; // Let the formatting hook handle it
     }
 
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      addBlockAfter(block.id, block.type === "bullet" || block.type === "numbered" || block.type === "todo" ? block.type : "text");
-    }
-    
     const contentEl = contentRefs.current.get(block.id);
     const isEmpty = contentEl ? (contentEl.textContent || "").trim() === "" : block.content === "";
-    
+
+    // Handle Enter key
+    if (e.key === "Enter" && !e.shiftKey) {
+      // For code blocks: allow new lines (Shift+Enter to exit)
+      if (block.type === "code") {
+        return; // Allow native Enter behavior for new lines
+      }
+
+      // For lists, todos, bullets: exit on empty second press
+      if (block.type === "bullet" || block.type === "numbered" || block.type === "todo") {
+        if (isEmpty) {
+          // Empty list item: convert to text block
+          e.preventDefault();
+          updateBlock(block.id, { type: "text" });
+        } else {
+          // Non-empty: create new list item
+          e.preventDefault();
+          addBlockAfter(block.id, block.type);
+        }
+        return;
+      }
+
+      // For other blocks: normal behavior
+      e.preventDefault();
+      addBlockAfter(block.id, "text");
+    }
+
+    // Handle Shift+Enter: exit code blocks or create new line in other blocks
+    if (e.key === "Enter" && e.shiftKey && block.type === "code") {
+      e.preventDefault();
+      addBlockAfter(block.id, "text");
+      return;
+    }
+
     if (e.key === "Backspace" && isEmpty && blocks.length > 1) {
       e.preventDefault();
       deleteBlock(block.id);
