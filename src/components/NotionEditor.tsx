@@ -277,9 +277,28 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
       // For lists, todos, bullets: exit on empty second press
       if (block.type === "bullet" || block.type === "numbered" || block.type === "todo") {
         if (isEmpty) {
-          // Empty list item: convert to text block
+          // Empty list item: delete it and create a new text block
           e.preventDefault();
-          updateBlock(block.id, { type: "text" });
+          const index = blocks.findIndex((b) => b.id === block.id);
+          const newBlocks = blocks.filter((b) => b.id !== block.id);
+
+          // Add a new text block at the same position
+          const newBlock: NoteBlock = {
+            id: crypto.randomUUID(),
+            type: "text",
+            content: "",
+          };
+          newBlocks.splice(index, 0, newBlock);
+          onChange(newBlocks);
+
+          // Focus the new text block
+          setTimeout(() => {
+            const el = blockRefs.current.get(newBlock.id);
+            if (el) {
+              const input = el.querySelector('[contenteditable], input');
+              if (input) (input as HTMLElement).focus();
+            }
+          }, 10);
         } else {
           // Non-empty: create new list item
           e.preventDefault();
