@@ -186,7 +186,7 @@ const FlashcardStudyMode = ({ flashcards, title, onClose }: FlashcardStudyModePr
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className={`w-full min-h-[300px] p-8 rounded-2xl border-4 shadow-xl flex items-center justify-center ${getCardStyle(currentCard.color)}`}
             >
-              <p className="text-2xl md:text-3xl font-medium text-center text-foreground leading-relaxed">
+              <p className="text-2xl md:text-3xl font-medium text-center leading-relaxed">
                 {currentCard.content}
               </p>
               {reviewed.has(currentCard.id) && (
