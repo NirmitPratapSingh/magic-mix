@@ -256,7 +256,7 @@ const FlashcardsPage = () => {
                           className={`p-3 rounded-xl border-2 ${getCardStyle(card.color)} min-h-[80px] flex items-center justify-center`}
                           whileHover={{ scale: 1.02 }}
                         >
-                          <p className="text-sm text-center text-foreground line-clamp-3">{card.content || "Empty card"}</p>
+                          <p className="text-sm text-center line-clamp-3">{card.content || "Empty card"}</p>
                         </motion.div>
                       ))}
                     </div>
