@@ -1093,7 +1093,7 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
           <div className="py-3">
             <div className="flex gap-3 overflow-x-auto pb-2">
               {(block.kanbanColumns || []).map((column, colIndex) => (
-                <div key={column.id} className="min-w-[200px] bg-muted/30 rounded-lg p-3 border border-border">
+                <div key={column.id} className="min-w-[200px] bg-muted/30 rounded-lg p-3 border border-border group/column">
                   <div className="flex items-center justify-between mb-3">
                     <input
                       type="text"
@@ -1103,11 +1103,25 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
                         newColumns[colIndex] = { ...column, title: e.target.value };
                         updateBlock(block.id, { kanbanColumns: newColumns });
                       }}
-                      className="font-medium text-sm bg-transparent outline-none"
+                      className="font-medium text-sm bg-transparent outline-none flex-1"
                     />
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                      {column.cards.length}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                        {column.cards.length}
+                      </span>
+                      {(block.kanbanColumns || []).length > 1 && (
+                        <button
+                          onClick={() => {
+                            const newColumns = (block.kanbanColumns || []).filter((_, i) => i !== colIndex);
+                            updateBlock(block.id, { kanbanColumns: newColumns });
+                          }}
+                          className="opacity-0 group-hover/column:opacity-100 p-1 rounded hover:bg-destructive/10 transition-all flex-shrink-0"
+                          title="Delete stage"
+                        >
+                          <X className="w-3 h-3 text-destructive" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                   <div className="space-y-2">
                     {column.cards.map((card, cardIndex) => (
