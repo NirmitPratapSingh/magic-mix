@@ -1674,10 +1674,11 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
               <motion.button
                 className="p-1.5 rounded-lg hover:bg-muted transition-colors cursor-grab active:cursor-grabbing"
                 whileHover={{ scale: 1.1 }}
-                drag
+                drag="y"
                 dragElastic={0.2}
                 dragMomentum={false}
-                onDragStart={() => handleBlockDragStart(block.id)}
+                dragConstraints={{ top: 0, bottom: 0 }}
+                onPointerDown={() => handleBlockDragStart(block.id)}
                 onDrag={(_, info) => handleBlockDragOver(block.id, info.offset.y)}
                 onDragEnd={() => {
                   handleBlockDragEnd();
