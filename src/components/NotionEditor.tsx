@@ -1733,7 +1733,6 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
                   e.preventDefault();
                   handleBlockDragStart(block.id, e.clientY);
                 }}
-                onPointerUp={() => handleBlockDragEnd(block.id)}
               >
                 <GripVertical className="w-4 h-4 text-muted-foreground" />
               </motion.button>
