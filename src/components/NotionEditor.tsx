@@ -1639,8 +1639,17 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
             key={block.id}
             ref={(el) => el && blockRefs.current.set(block.id, el)}
             initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="group relative flex items-start gap-1"
+            animate={{
+              opacity: draggedBlockId === block.id ? 0.5 : 1,
+              y: 0,
+              scale: draggedBlockId === block.id ? 0.98 : 1,
+            }}
+            transition={{ duration: 0.2 }}
+            className={`group relative flex items-start gap-1 ${
+              dragOverBlockId === block.id && draggedBlockId !== block.id
+                ? 'border-t-2 border-primary/50 pt-1'
+                : ''
+            }`}
             onMouseEnter={() => setActiveBlockId(block.id)}
             onMouseLeave={() => setActiveBlockId(null)}
           >
