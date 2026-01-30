@@ -1658,9 +1658,20 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
               >
                 <Plus className="w-4 h-4 text-muted-foreground group-hover/btn:text-primary transition-colors" />
               </motion.button>
-              <motion.button 
+              <motion.button
                 className="p-1.5 rounded-lg hover:bg-muted transition-colors cursor-grab active:cursor-grabbing"
                 whileHover={{ scale: 1.1 }}
+                drag
+                dragElastic={0.2}
+                dragMomentum={false}
+                onDragStart={() => handleBlockDragStart(block.id)}
+                onDrag={(_, info) => handleBlockDragOver(block.id, info.offset.y)}
+                onDragEnd={() => {
+                  handleBlockDragEnd();
+                  if (dragOverBlockId && dragOverBlockId !== block.id) {
+                    reorderBlocks(block.id, dragOverBlockId);
+                  }
+                }}
               >
                 <GripVertical className="w-4 h-4 text-muted-foreground" />
               </motion.button>
