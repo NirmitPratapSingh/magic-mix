@@ -404,6 +404,41 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
       bt.description.toLowerCase().includes(menuFilter.toLowerCase())
   );
 
+  const handleBlockDragStart = (blockId: string) => {
+    setDraggedBlockId(blockId);
+    setShowMenu(null);
+  };
+
+  const handleBlockDragEnd = () => {
+    setDraggedBlockId(null);
+    setDragOverBlockId(null);
+  };
+
+  const handleBlockDragOver = (blockId: string, offsetY: number) => {
+    dragYRef.current = offsetY;
+    setDragOverBlockId(blockId);
+  };
+
+  const reorderBlocks = (draggedId: string, targetId: string) => {
+    const draggedIndex = blocks.findIndex(b => b.id === draggedId);
+    const targetIndex = blocks.findIndex(b => b.id === targetId);
+
+    if (draggedIndex === -1 || targetIndex === -1 || draggedIndex === targetIndex) {
+      return;
+    }
+
+    const newBlocks = [...blocks];
+    const [draggedBlock] = newBlocks.splice(draggedIndex, 1);
+
+    if (draggedIndex < targetIndex) {
+      newBlocks.splice(targetIndex - 1, 0, draggedBlock);
+    } else {
+      newBlocks.splice(targetIndex, 0, draggedBlock);
+    }
+
+    onChange(newBlocks);
+  };
+
   // Track content refs to avoid re-renders resetting cursor
   const initializedRefs = useRef<Set<string>>(new Set());
   const currentBlockIds = useRef<string>("");
