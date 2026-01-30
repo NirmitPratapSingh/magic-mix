@@ -111,8 +111,11 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
   const [lightboxImages, setLightboxImages] = useState<{ url: string; caption?: string }[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [studyModeBlock, setStudyModeBlock] = useState<NoteBlock | null>(null);
+  const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null);
+  const [dragOverBlockId, setDragOverBlockId] = useState<string | null>(null);
   const blockRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const contentRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const dragYRef = useRef(0);
 
   const updateBlock = (id: string, updates: Partial<NoteBlock>) => {
     onChange(
