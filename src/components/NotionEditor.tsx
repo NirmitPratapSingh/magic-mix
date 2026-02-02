@@ -934,32 +934,10 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
 
       case "equation":
         return (
-          <div className="py-2">
-            <div className={getBlockStyle("equation")}>
-              <div
-                ref={(el) => {
-                  if (el) {
-                    contentRefs.current.set(block.id, el);
-                    if (!initializedRefs.current.has(block.id)) {
-                      el.textContent = block.content || "";
-                      initializedRefs.current.add(block.id);
-                    }
-                  }
-                }}
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => {
-                  const text = e.currentTarget.textContent || "";
-                  if (text !== block.content) {
-                    updateBlock(block.id, { content: text });
-                  }
-                }}
-                onKeyDown={(e) => handleKeyDown(e, block)}
-                className="outline-none min-h-[60px]"
-                data-placeholder="∑ (x² + y²) = z²"
-              />
-            </div>
-          </div>
+          <EquationBlock
+            content={block.content}
+            onChange={(content) => updateBlock(block.id, { content })}
+          />
         );
 
       case "columns":
