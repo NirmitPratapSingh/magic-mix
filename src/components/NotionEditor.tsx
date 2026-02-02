@@ -125,6 +125,25 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
     );
   };
 
+  const updateNestedBlock = (parentBlockId: string, columnIndex: number, nestedBlockId: string, updates: Partial<NoteBlock>) => {
+    onChange(
+      blocks.map((block) => {
+        if (block.id === parentBlockId && block.columns) {
+          const newColumns = block.columns.map((column, colIdx) => {
+            if (colIdx === columnIndex) {
+              return column.map((nestedBlock) =>
+                nestedBlock.id === nestedBlockId ? { ...nestedBlock, ...updates } : nestedBlock
+              );
+            }
+            return column;
+          });
+          return { ...block, columns: newColumns };
+        }
+        return block;
+      })
+    );
+  };
+
   const openLightbox = (images: { url: string; caption?: string }[], startIndex = 0) => {
     setLightboxImages(images);
     setLightboxIndex(startIndex);
