@@ -1571,99 +1571,29 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
 
       case "database":
         return (
-          <div className="py-3">
-            <div className="border border-border rounded-lg overflow-hidden">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-muted/50">
-                    {(block.databaseColumns || []).map((col) => (
-                      <th key={col.id} className="px-3 py-2 text-left text-sm font-medium border-r border-border last:border-r-0">
-                        <div className="flex items-center gap-2">
-                          {col.type === "checkbox" ? <CheckSquare className="w-3 h-3" /> :
-                           col.type === "date" ? <Calendar className="w-3 h-3" /> :
-                           col.type === "number" ? <span className="text-xs">#</span> :
-                           <Type className="w-3 h-3" />}
-                          <span>{col.name}</span>
-                        </div>
-                      </th>
-                    ))}
-                    <th className="w-8" />
-                  </tr>
-                </thead>
-                <tbody>
-                  {(block.databaseRows || []).map((row, rowIndex) => (
-                    <tr key={row.id} className="border-t border-border group/dbrow">
-                      {(block.databaseColumns || []).map((col) => (
-                        <td key={col.id} className="px-3 py-2 border-r border-border last:border-r-0">
-                          {col.type === "checkbox" ? (
-                            <input
-                              type="checkbox"
-                              checked={row.cells[col.id] === "true"}
-                              onChange={(e) => {
-                                const newRows = [...(block.databaseRows || [])];
-                                newRows[rowIndex].cells[col.id] = e.target.checked.toString();
-                                updateBlock(block.id, { databaseRows: newRows });
-                              }}
-                              className="w-4 h-4"
-                            />
-                          ) : col.type === "date" ? (
-                            <input
-                              type="date"
-                              value={row.cells[col.id] || ""}
-                              onChange={(e) => {
-                                const newRows = [...(block.databaseRows || [])];
-                                newRows[rowIndex].cells[col.id] = e.target.value;
-                                updateBlock(block.id, { databaseRows: newRows });
-                              }}
-                              className="text-sm bg-transparent outline-none"
-                            />
-                          ) : (
-                            <input
-                              type={col.type === "number" ? "number" : "text"}
-                              value={row.cells[col.id] || ""}
-                              onChange={(e) => {
-                                const newRows = [...(block.databaseRows || [])];
-                                newRows[rowIndex].cells[col.id] = e.target.value;
-                                updateBlock(block.id, { databaseRows: newRows });
-                              }}
-                              className="w-full text-sm bg-transparent outline-none"
-                              placeholder="..."
-                            />
-                          )}
-                        </td>
-                      ))}
-                      <td className="opacity-0 group-hover/dbrow:opacity-100">
-                        <button
-                          onClick={() => {
-                            const newRows = (block.databaseRows || []).filter((_, i) => i !== rowIndex);
-                            updateBlock(block.id, { databaseRows: newRows });
-                          }}
-                          className="p-1 hover:bg-destructive/10 rounded"
-                        >
-                          <X className="w-3 h-3 text-destructive" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="flex gap-2 mt-2">
-              <button
-                onClick={() => {
-                  const newRow = {
-                    id: crypto.randomUUID(),
-                    cells: (block.databaseColumns || []).reduce((acc, col) => ({ ...acc, [col.id]: "" }), {})
-                  };
-                  updateBlock(block.id, { databaseRows: [...(block.databaseRows || []), newRow] });
-                }}
-                className="flex items-center gap-1 px-3 py-1.5 text-xs bg-muted hover:bg-muted/80 rounded-lg transition-colors"
-              >
-                <PlusCircle className="w-3 h-3" />
-                Add row
-              </button>
-            </div>
-          </div>
+          <DatabaseBlock
+            block={block}
+            onUpdate={(updates) => updateBlock(block.id, updates)}
+            onCreateChart={(chartData) => {
+              // Add a new chart block after this database block
+              const index = blocks.findIndex((b) => b.id === block.id);
+              const chartBlock: NoteBlock = {
+                id: crypto.randomUUID(),
+                type: "chart",
+                content: "Chart from Database",
+                chartType: "bar",
+                chartTitle: "My Chart",
+                chartColumns: chartData.columns,
+                chartRows: chartData.rows,
+                chartXAxisKey: chartData.columns[0]?.id,
+                chartSelectedSeries: chartData.columns.filter(c => c.type === "number").map(c => c.id),
+                chartSeriesColors: {},
+              };
+              const newBlocks = [...blocks];
+              newBlocks.splice(index + 1, 0, chartBlock);
+              onChange(newBlocks);
+            }}
+          />
         );
 
       case "mindmap":
