@@ -44,6 +44,7 @@ const colorOptions = [
 const DataTable = ({ block, onUpdate, onCreateChart }: DataTableProps) => {
   const [selectedCell, setSelectedCell] = useState<{ row: number; col: number } | null>(null);
   const [showFormatting, setShowFormatting] = useState(false);
+  const [toolbarPosition, setToolbarPosition] = useState<{ top: number; left: number } | null>(null);
 
   // Compatibility: convert old tableData to new cellData format if needed
   const tableData = block.tableData || [["Name", "Value"], ["", ""]];
