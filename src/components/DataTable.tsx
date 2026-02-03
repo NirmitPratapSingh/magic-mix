@@ -113,7 +113,7 @@ const DataTable = ({ block, onUpdate, onCreateChart }: DataTableProps) => {
               {tableData[0]?.map((header, colIndex) => (
                 <th
                   key={colIndex}
-                  className="px-3 py-3 text-left text-sm font-bold border-r border-border last:border-r-0 group/col hover:bg-primary/10 transition-colors relative min-w-[150px]"
+                  className="px-4 py-3 text-left text-sm font-bold border-r border-border last:border-r-0 group/col hover:bg-primary/10 transition-colors relative"
                 >
                   <input
                     type="text"
