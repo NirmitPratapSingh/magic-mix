@@ -74,6 +74,7 @@ export interface NoteBlock {
   chartXAxisKey?: string;
   chartSelectedSeries?: string[];
   chartSeriesColors?: { [key: string]: string };
+  linkedTableId?: string; // For charts linked to table data
   // Legacy support
   chartData?: { id: string; label: string; value: number; color: string }[];
 }
