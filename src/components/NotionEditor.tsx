@@ -1692,6 +1692,7 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
           <motion.div
             key={block.id}
             layout
+            data-block-id={block.id}
             ref={(el) => el && blockRefs.current.set(block.id, el)}
             initial={{ opacity: 0, y: -5 }}
             animate={{
