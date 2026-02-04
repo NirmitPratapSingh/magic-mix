@@ -928,21 +928,41 @@ export const templates: Template[] = [
   {
     id: "product-spec",
     name: "Product Spec",
-    description: "Define product requirements and specifications with examples",
+    description: "Complete product specification with requirements and success metrics",
     icon: "🎯",
     color: "from-yellow-500/20 to-amber-500/20",
     blocks: [
       {
         type: "heading1",
-        content: "Product Specification",
+        content: "Product Specification: [Product Name]",
+      },
+      {
+        type: "callout",
+        content: "🚀 Vision: What is this product and why does it matter?",
+      },
+      {
+        type: "divider",
+        content: "---",
       },
       {
         type: "heading2",
-        content: "Problem Statement",
+        content: "🎯 Problem Statement",
       },
       {
         type: "text",
-        content: "What problem are we solving? Who has this problem?",
+        content: "Detailed description of the problem being solved.",
+      },
+      {
+        type: "heading3",
+        content: "Target Users",
+      },
+      {
+        type: "bullet",
+        content: "User type 1 and their pain point",
+      },
+      {
+        type: "bullet",
+        content: "User type 2 and their challenge",
       },
       {
         type: "divider",
@@ -950,11 +970,27 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Proposed Solution",
+        content: "💡 Proposed Solution",
       },
       {
         type: "text",
-        content: "Overview of the solution and how it addresses the problem.",
+        content: "How our product solves the problem and delivers value.",
+      },
+      {
+        type: "heading3",
+        content: "Key Value Propositions",
+      },
+      {
+        type: "numbered",
+        content: "Primary benefit to users",
+      },
+      {
+        type: "numbered",
+        content: "Business advantage or differentiation",
+      },
+      {
+        type: "numbered",
+        content: "Long-term impact",
       },
       {
         type: "divider",
@@ -962,31 +998,43 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Features & Requirements",
+        content: "✨ Features & Requirements",
       },
       {
         type: "heading3",
-        content: "Core Features",
+        content: "🔴 Must-Have Features (MVP)",
       },
       {
         type: "bullet",
-        content: "Feature 1 - User benefit",
+        content: "Core Feature 1 - User benefit and usage",
       },
       {
         type: "bullet",
-        content: "Feature 2 - User benefit",
+        content: "Core Feature 2 - Key functionality",
+      },
+      {
+        type: "bullet",
+        content: "Core Feature 3 - Essential capability",
       },
       {
         type: "heading3",
-        content: "Nice-to-Have Features",
+        content: "🟡 Should-Have Features",
       },
       {
         type: "bullet",
-        content: "Enhancement 1",
+        content: "Enhancement 1 - Improves experience",
       },
       {
         type: "bullet",
-        content: "Enhancement 2",
+        content: "Enhancement 2 - Increases value",
+      },
+      {
+        type: "heading3",
+        content: "🟢 Nice-to-Have Features",
+      },
+      {
+        type: "bullet",
+        content: "Future feature - Phase 2 or later",
       },
       {
         type: "divider",
@@ -994,23 +1042,31 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "User Scenarios",
+        content: "👥 User Scenarios & Use Cases",
       },
       {
         type: "heading3",
-        content: "Scenario 1: Primary Use Case",
+        content: "Primary Use Case",
       },
       {
         type: "numbered",
-        content: "User opens the product",
+        content: "User initiates action",
       },
       {
         type: "numbered",
-        content: "User takes action X",
+        content: "System processes request",
       },
       {
         type: "numbered",
-        content: "System responds with Y",
+        content: "User receives result",
+      },
+      {
+        type: "heading3",
+        content: "Secondary Use Case",
+      },
+      {
+        type: "text",
+        content: "Additional user workflow or scenario",
       },
       {
         type: "divider",
@@ -1018,15 +1074,16 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Success Metrics",
+        content: "📊 Success Metrics & KPIs",
       },
       {
         type: "table",
         tableData: [
-          ["Metric", "Target", "Unit"],
-          ["User Adoption", "1000 users", "in 3 months"],
-          ["Retention", "60%", "monthly"],
-          ["Performance", "<2s", "load time"],
+          ["📈 Metric", "🎯 Target", "⏱️ Timeline", "📊 Current"],
+          ["User Adoption", "1,000 users", "3 months", "TBD"],
+          ["Monthly Active Users", "60%", "Ongoing", "TBD"],
+          ["User Satisfaction", ">4.0/5.0", "Ongoing", "TBD"],
+          ["System Performance", "<2s load", "Launch", "TBD"],
         ],
       },
       {
@@ -1035,11 +1092,59 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Technical Notes",
+        content: "🔧 Technical Architecture",
+      },
+      {
+        type: "heading3",
+        content: "Tech Stack",
+      },
+      {
+        type: "bullet",
+        content: "Frontend: [Framework/Library]",
+      },
+      {
+        type: "bullet",
+        content: "Backend: [Language/Framework]",
+      },
+      {
+        type: "bullet",
+        content: "Database: [Type and system]",
+      },
+      {
+        type: "heading3",
+        content: "API Endpoints",
       },
       {
         type: "code",
-        content: "// Technical implementation notes\napi_endpoints: [\n  POST /api/feature,\n  GET /api/feature/:id,\n  PUT /api/feature/:id\n]",
+        content: "// Core API Endpoints\nPOST   /api/v1/resource       // Create\nGET    /api/v1/resource/:id   // Read\nPUT    /api/v1/resource/:id   // Update\nDELETE /api/v1/resource/:id   // Delete\nGET    /api/v1/resource       // List",
+      },
+      {
+        type: "divider",
+        content: "---",
+      },
+      {
+        type: "heading2",
+        content: "📅 Timeline & Milestones",
+      },
+      {
+        type: "todo",
+        content: "Phase 1: Design & Planning (Week 1-2)",
+        checked: false,
+      },
+      {
+        type: "todo",
+        content: "Phase 2: Core Development (Week 3-6)",
+        checked: false,
+      },
+      {
+        type: "todo",
+        content: "Phase 3: Testing & QA (Week 7)",
+        checked: false,
+      },
+      {
+        type: "todo",
+        content: "Phase 4: Launch & Monitoring (Week 8)",
+        checked: false,
       },
     ],
   },
