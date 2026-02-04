@@ -1672,6 +1672,8 @@ const NotionEditor = ({ blocks, onChange }: NotionEditorProps) => {
               chartXAxisKey={block.chartXAxisKey}
               chartSelectedSeries={block.chartSelectedSeries}
               chartSeriesColors={block.chartSeriesColors}
+              linkedTableId={block.linkedTableId}
+              blocks={blocks}
               chartData={block.chartData}
               onUpdate={(updates) => updateBlock(block.id, updates)}
             />
