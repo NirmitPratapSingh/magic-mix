@@ -172,6 +172,8 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
         index={index}
         onHeadingClick={scrollToHeading}
         focusMode={focusMode}
+        isOpen={showIndex}
+        onToggle={setShowIndex}
       />
 
         {/* Main Content Wrapper */}
