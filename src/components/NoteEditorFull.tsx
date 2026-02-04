@@ -30,9 +30,18 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
   const [showTagInput, setShowTagInput] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [showIndex, setShowIndex] = useState(true);
+  const [showTemplates, setShowTemplates] = useState(false);
 
   // Index functionality
   const { index, scrollToHeading } = useHeadingIndex(note.blocks);
+
+  const handleApplyTemplate = (template: Template) => {
+    const newBlocks = template.blocks.map((block) => ({
+      ...block,
+      id: crypto.randomUUID(),
+    }));
+    onUpdate({ blocks: newBlocks });
+  };
 
   const handleAddTag = () => {
     if (newTagInput.trim()) {
