@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, MoreHorizontal, Star, Share2, Clock, Focus, Minimize2, BookOpen } from "lucide-react";
+import { X, Plus, MoreHorizontal, Star, Share2, Clock, Focus, Minimize2, BookOpen, Sparkles } from "lucide-react";
 import NotionEditor from "./NotionEditor";
 import FloatingToolbar from "./FloatingToolbar";
 import TemplatesModal from "./TemplatesModal";
