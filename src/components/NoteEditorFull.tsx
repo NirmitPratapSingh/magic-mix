@@ -28,7 +28,6 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
   const [newTagInput, setNewTagInput] = useState("");
   const [showTagInput, setShowTagInput] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [showIndexPopover, setShowIndexPopover] = useState(false);
 
   // Index functionality
   const { index, scrollToHeading } = useHeadingIndex(note.blocks);
