@@ -150,9 +150,6 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
 
         {/* Main Content Wrapper */}
         <div className="flex flex-1 overflow-hidden">
-          {/* Index Panel - only in focus mode */}
-          <IndexPanel index={index} onHeadingClick={scrollToHeading} isVisible={focusMode} />
-
           {/* Content Area */}
           <div className={`flex-1 overflow-y-auto scrollbar-thin transition-all duration-300 ${
             focusMode
