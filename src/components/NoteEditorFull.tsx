@@ -61,28 +61,32 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
   };
 
   return (
-    <motion.div 
-      className={`flex-1 h-full bg-card flex flex-col overflow-hidden transition-all duration-300 ${
-        focusMode ? 'fixed inset-0 z-50 bg-background' : ''
-      }`}
-      layout
-    >
-      {/* Floating Toolbar - appears on text selection */}
-      <FloatingToolbar />
+    <>
+      {/* Index Popover - only in normal mode */}
+      {!focusMode && <IndexPopover index={index} onHeadingClick={scrollToHeading} />}
 
-      {/* Focus mode backdrop */}
-      <AnimatePresence>
-        {focusMode && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-background -z-10"
-          />
-        )}
-      </AnimatePresence>
+      <motion.div
+        className={`flex-1 h-full bg-card flex flex-col overflow-hidden transition-all duration-300 ${
+          focusMode ? 'fixed inset-0 z-50 bg-background' : ''
+        }`}
+        layout
+      >
+        {/* Floating Toolbar - appears on text selection */}
+        <FloatingToolbar />
 
-      {/* Top Bar */}
+        {/* Focus mode backdrop */}
+        <AnimatePresence>
+          {focusMode && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-background -z-10"
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Top Bar */}
       <motion.div 
         className={`flex items-center justify-between px-6 py-3 border-b border-border transition-all duration-300 ${
           focusMode 
@@ -141,9 +145,14 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
         </div>
       </motion.div>
 
-      {/* Content Area */}
-      <div className={`flex-1 overflow-y-auto scrollbar-thin ${focusMode ? 'pt-8' : ''}`}>
-        <motion.div
+        {/* Main Content Wrapper with Index Panel */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* Index Panel - only in focus mode */}
+          <IndexPanel index={index} onHeadingClick={scrollToHeading} isVisible={focusMode} />
+
+          {/* Content Area */}
+          <div className={`flex-1 overflow-y-auto scrollbar-thin ${focusMode ? 'pt-8' : ''}`}>
+            <motion.div
           className={`mx-auto transition-all duration-300 ${
             focusMode
               ? 'max-w-3xl pt-16 px-4 md:px-6 py-6'
@@ -259,10 +268,11 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
           >
             <NotionEditor blocks={note.blocks} onChange={handleBlocksChange} />
           </motion.div>
-        </motion.div>
-      </div>
+            </motion.div>
+          </div>
+        </div>
 
-      {/* Focus mode floating exit button */}
+        {/* Focus mode floating exit button */}
       <AnimatePresence>
         {focusMode && (
           <motion.button
@@ -279,7 +289,8 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
           </motion.button>
         )}
       </AnimatePresence>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
