@@ -113,6 +113,17 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
           </div>
         </div>
         <div className="flex items-center gap-1">
+          {/* Templates Button */}
+          <motion.button
+            onClick={() => setShowTemplates(true)}
+            className="p-2 rounded-lg hover:bg-muted text-muted-foreground transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            title="Use a template"
+          >
+            <Sparkles className="w-4 h-4" />
+          </motion.button>
+
           {/* Focus Mode Toggle */}
           <motion.button
             onClick={onToggleFocusMode}
