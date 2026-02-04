@@ -52,7 +52,7 @@ const FloatingIndexSidebar = ({
                   <h3 className="text-sm font-bold text-foreground tracking-tight">Document Index</h3>
                 </div>
                 <motion.button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleToggle(false)}
                   className="p-1.5 hover:bg-muted rounded-lg transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
