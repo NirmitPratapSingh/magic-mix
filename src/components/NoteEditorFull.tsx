@@ -221,9 +221,23 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
           <IndexPanel index={index} onHeadingClick={scrollToHeading} isVisible={focusMode} />
 
           {/* Content Area */}
-          <div className={`flex-1 overflow-y-auto scrollbar-thin ${focusMode ? 'pt-8' : ''}`}>
+          <div className={`flex-1 overflow-y-auto scrollbar-thin transition-all duration-300 ${
+            focusMode
+              ? 'bg-gradient-to-br from-background via-background to-primary/5 pt-8'
+              : ''
+          }`}>
+            {/* Focus mode decorative elements */}
+            {focusMode && (
+              <>
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+                  <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+                </div>
+              </>
+            )}
+
             <motion.div
-          className={`mx-auto transition-all duration-300 ${
+          className={`mx-auto transition-all duration-300 relative z-10 ${
             focusMode
               ? 'max-w-3xl pt-16 px-4 md:px-6 py-6'
               : 'max-w-4xl p-6 md:p-10'
