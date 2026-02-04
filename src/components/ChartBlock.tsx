@@ -709,19 +709,30 @@ const ChartBlock = ({
             </>
           ) : (
             <>
-              <motion.button 
-                onClick={() => setIsEnlarged(true)} 
-                className="p-2 rounded-lg hover:bg-muted transition-colors" 
-                whileHover={{ scale: 1.05 }} 
+              {linkedTableId && blocks && (
+                <motion.button
+                  onClick={handleSyncFromTable}
+                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Sync data from linked table"
+                >
+                  <RefreshCw className="w-4 h-4 text-muted-foreground" />
+                </motion.button>
+              )}
+              <motion.button
+                onClick={() => setIsEnlarged(true)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 title="Enlarge chart"
               >
                 <Maximize2 className="w-4 h-4 text-muted-foreground" />
               </motion.button>
-              <motion.button 
-                onClick={() => setIsEditing(true)} 
-                className="p-2 rounded-lg hover:bg-muted transition-colors" 
-                whileHover={{ scale: 1.05 }} 
+              <motion.button
+                onClick={() => setIsEditing(true)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 title="Edit chart"
               >
