@@ -166,14 +166,70 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
         </div>
       </motion.div>
 
-      {/* Floating Index Sidebar - works in both modes */}
-      <FloatingIndexSidebar
-        index={index}
-        onHeadingClick={scrollToHeading}
-        focusMode={focusMode}
-        isOpen={showIndex}
-        onToggle={setShowIndex}
-      />
+      {/* Index Dropdown Menu */}
+      <AnimatePresence>
+        {showIndex && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="absolute right-6 top-14 z-50 w-72 max-h-96 bg-card border border-border rounded-lg shadow-lg overflow-hidden flex flex-col"
+          >
+            {/* Header */}
+            <div className="px-4 py-3 border-b border-border/50 bg-muted/30">
+              <h3 className="text-sm font-semibold text-foreground">Document Sections</h3>
+            </div>
+
+            {/* Content */}
+            {index.length === 0 ? (
+              <div className="flex-1 flex items-center justify-center py-8">
+                <p className="text-sm text-muted-foreground text-center px-4">
+                  No headings yet. Add headings to your note to create an index.
+                </p>
+              </div>
+            ) : (
+              <div className="flex-1 overflow-y-auto">
+                <div className="py-2 px-1">
+                  {index.map((heading) => (
+                    <motion.button
+                      key={heading.id}
+                      onClick={() => {
+                        scrollToHeading(heading.id);
+                        setShowIndex(false);
+                      }}
+                      className="w-full text-left px-4 py-2.5 hover:bg-muted/60 transition-colors group text-sm"
+                      style={{
+                        paddingLeft: `${16 + heading.indent * 16}px`,
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <span
+                        className={`block truncate transition-colors ${
+                          heading.level === 1
+                            ? 'font-medium text-foreground'
+                            : heading.level === 2
+                            ? 'font-normal text-foreground/85'
+                            : 'text-foreground/70 text-xs'
+                        }`}
+                      >
+                        {heading.text || `Untitled ${heading.level === 1 ? "Heading" : "Subheading"}`}
+                      </span>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Footer */}
+            {index.length > 0 && (
+              <div className="px-4 py-2 border-t border-border/50 bg-muted/20 text-xs text-muted-foreground">
+                {index.length} section{index.length !== 1 ? 's' : ''}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
         {/* Main Content Wrapper */}
         <div className="flex flex-1 overflow-hidden">
