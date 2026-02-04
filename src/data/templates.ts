@@ -15,25 +15,21 @@ export const templates: Template[] = [
   {
     id: "blog-post",
     name: "Blog Post",
-    description: "Perfect for writing engaging blog articles with sections and quotes",
+    description: "Perfect for writing engaging blog articles with rich formatting",
     icon: "📝",
     color: "from-blue-500/20 to-cyan-500/20",
     blocks: [
       {
         type: "heading1",
-        content: "Blog Post Title",
+        content: "Your Amazing Blog Title",
+      },
+      {
+        type: "callout",
+        content: "📌 Hook your readers here - Start with a bold statement or intriguing question",
       },
       {
         type: "text",
-        content: "Write a compelling introduction that captures your reader's attention and sets up the main topic.",
-      },
-      {
-        type: "heading2",
-        content: "Introduction",
-      },
-      {
-        type: "text",
-        content: "Begin with an engaging hook or question to draw readers in.",
+        content: "Write a compelling introduction (100-150 words) that sets up the topic and tells readers why they should care about what you're about to share.",
       },
       {
         type: "divider",
@@ -41,23 +37,27 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Main Point 1",
+        content: "🎯 Main Point 1 - The Core Idea",
       },
       {
         type: "text",
-        content: "Develop your first main argument with supporting evidence and examples.",
+        content: "Develop your first argument with supporting evidence and real-world examples.",
       },
       {
         type: "bullet",
-        content: "Key supporting point",
+        content: "Key insight or evidence",
       },
       {
         type: "bullet",
-        content: "Additional evidence",
+        content: "Supporting data or example",
+      },
+      {
+        type: "bullet",
+        content: "Relevant statistic or fact",
       },
       {
         type: "quote",
-        content: "Add a relevant quote that reinforces your point",
+        content: "💭 Add a powerful quote that reinforces your point and resonates with readers",
       },
       {
         type: "divider",
@@ -65,19 +65,27 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Main Point 2",
+        content: "💡 Main Point 2 - The Game Changer",
       },
       {
         type: "text",
-        content: "Present your second argument with clear explanations.",
+        content: "Build on your first point with a complementary or contrasting perspective.",
       },
       {
-        type: "bullet",
-        content: "Supporting detail",
+        type: "numbered",
+        content: "First reason why this matters",
       },
       {
-        type: "bullet",
-        content: "Key takeaway",
+        type: "numbered",
+        content: "Second reason backed by logic",
+      },
+      {
+        type: "numbered",
+        content: "Third reason with impact",
+      },
+      {
+        type: "code",
+        content: "// Example or code snippet that illustrates your point\nconst example = {\n  concept: \"Practical application\",\n  impact: \"Real-world benefit\"\n}",
       },
       {
         type: "divider",
@@ -85,11 +93,39 @@ export const templates: Template[] = [
       },
       {
         type: "heading2",
-        content: "Conclusion",
+        content: "✨ Key Takeaways",
+      },
+      {
+        type: "callout",
+        content: "📚 Remember: The main value your readers should get from this article",
+      },
+      {
+        type: "bullet",
+        content: "Takeaway 1 - The big idea",
+      },
+      {
+        type: "bullet",
+        content: "Takeaway 2 - The practical benefit",
+      },
+      {
+        type: "bullet",
+        content: "Takeaway 3 - Next steps",
+      },
+      {
+        type: "divider",
+        content: "---",
+      },
+      {
+        type: "heading2",
+        content: "🚀 Conclusion & Call to Action",
       },
       {
         type: "text",
-        content: "Summarize your main points and provide a clear call to action or final thought.",
+        content: "Summarize your main points and inspire your readers to take action or think differently.",
+      },
+      {
+        type: "quote",
+        content: "💪 End with an empowering statement that motivates action",
       },
     ],
   },
