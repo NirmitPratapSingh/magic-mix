@@ -137,6 +137,7 @@ export const templates: Template[] = [
     description: "Professional meeting capture with agenda, decisions, and tracking",
     icon: "📅",
     color: "from-purple-500/20 to-pink-500/20",
+    category: "Project Management",
     blocks: [
       {
         type: "heading1",
@@ -278,6 +279,7 @@ export const templates: Template[] = [
     description: "Track project progress with goals, timeline, and team responsibilities",
     icon: "🚀",
     color: "from-green-500/20 to-emerald-500/20",
+    category: "Project Management",
     blocks: [
       {
         type: "heading1",
@@ -440,6 +442,7 @@ export const templates: Template[] = [
     description: "Comprehensive book notes with quotes, takeaways, and ratings",
     icon: "📚",
     color: "from-orange-500/20 to-red-500/20",
+    category: "Personal & Learning",
     blocks: [
       {
         type: "heading1",
@@ -588,6 +591,7 @@ export const templates: Template[] = [
     description: "Mindful daily reflection with gratitude, wins, and growth",
     icon: "📔",
     color: "from-pink-500/20 to-rose-500/20",
+    category: "Personal & Learning",
     blocks: [
       {
         type: "heading1",
@@ -756,6 +760,7 @@ export const templates: Template[] = [
     description: "Organize research with sources, data analysis, and conclusions",
     icon: "🔬",
     color: "from-indigo-500/20 to-violet-500/20",
+    category: "Personal & Learning",
     blocks: [
       {
         type: "heading1",
@@ -933,6 +938,7 @@ export const templates: Template[] = [
     description: "Complete product specification with requirements and success metrics",
     icon: "🎯",
     color: "from-yellow-500/20 to-amber-500/20",
+    category: "Project Management",
     blocks: [
       {
         type: "heading1",
@@ -1156,6 +1162,7 @@ export const templates: Template[] = [
     description: "Strategic marketing plan with campaigns, channels, and metrics",
     icon: "📢",
     color: "from-red-500/20 to-orange-500/20",
+    category: "Marketing",
     blocks: [
       { type: "heading1", content: "Marketing Plan: [Year/Quarter]" },
       { type: "callout", content: "🎯 Marketing Goal: Define the overall marketing objective" },
@@ -1192,6 +1199,7 @@ export const templates: Template[] = [
     description: "Track deals and sales opportunities through stages",
     icon: "💰",
     color: "from-green-500/20 to-teal-500/20",
+    category: "Sales & Business",
     blocks: [
       { type: "heading1", content: "Sales Pipeline - [Month/Quarter]" },
       { type: "text", content: "Track all active opportunities and their progression through sales stages." },
@@ -1220,6 +1228,7 @@ export const templates: Template[] = [
     description: "Professional proposal template for new business opportunities",
     icon: "📄",
     color: "from-blue-500/20 to-indigo-500/20",
+    category: "Sales & Business",
     blocks: [
       { type: "heading1", content: "Proposal: [Project Name]" },
       { type: "heading2", content: "📋 Executive Summary" },
@@ -1262,6 +1271,7 @@ export const templates: Template[] = [
     description: "Assess performance and plan for next quarter",
     icon: "📈",
     color: "from-violet-500/20 to-purple-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "Q[X] 20XX Review & Q[X+1] Planning" },
       { type: "callout", content: "📊 Review Period: [Date] to [Date]" },
@@ -1297,6 +1307,7 @@ export const templates: Template[] = [
     description: "Plan and track content distribution across channels",
     icon: "📅",
     color: "from-pink-500/20 to-rose-500/20",
+    category: "Marketing",
     blocks: [
       { type: "heading1", content: "Content Calendar - [Month/Quarter]" },
       { type: "text", content: "Plan and schedule all content across marketing channels." },
@@ -1327,6 +1338,7 @@ export const templates: Template[] = [
     description: "Capture insights from customer interviews and feedback",
     icon: "🎤",
     color: "from-cyan-500/20 to-blue-500/20",
+    category: "Sales & Business",
     blocks: [
       { type: "heading1", content: "Customer Interview Notes" },
       { type: "table", tableData: [["Date", "Customer", "Contact", "Role"], ["MM/DD/YYYY", "[Company]", "[Name]", "[Title]"]] },
@@ -1359,6 +1371,7 @@ export const templates: Template[] = [
     description: "Comprehensive business plan for startups or ventures",
     icon: "🏢",
     color: "from-amber-500/20 to-yellow-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "Business Plan: [Company Name]" },
       { type: "callout", content: "🚀 Vision: [Long-term vision statement]" },
@@ -1403,6 +1416,7 @@ export const templates: Template[] = [
     description: "Set quarterly objectives and key results",
     icon: "🎯",
     color: "from-lime-500/20 to-green-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "OKR Planning - Q[X] 20XX" },
       { type: "text", content: "Define Objectives and Key Results for the quarter." },
@@ -1441,6 +1455,7 @@ export const templates: Template[] = [
     description: "Analyze competitors and market positioning",
     icon: "🔍",
     color: "from-slate-500/20 to-gray-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "Competitor Analysis" },
       { type: "text", content: "Comprehensive analysis of key competitors." },
@@ -1473,6 +1488,7 @@ export const templates: Template[] = [
     description: "Complete CRM with accounts, contacts, pipeline, communication, and analytics",
     icon: "🤝",
     color: "from-indigo-500/20 to-blue-500/20",
+    category: "Sales & Business",
     blocks: [
       { type: "heading1", content: "CRM System - [Company/Team Name]" },
       { type: "callout", content: "🚀 CRM Dashboard: Centralized customer and sales management hub" },
@@ -1615,6 +1631,7 @@ export const templates: Template[] = [
     description: "Agile sprint planning with user stories, tasks, and capacity planning",
     icon: "🏃",
     color: "from-orange-500/20 to-red-500/20",
+    category: "Project Management",
     blocks: [
       { type: "heading1", content: "Sprint Planning - Sprint [Number]" },
       { type: "text", content: "📅 Start: [Date] | 📅 End: [Date] | ⏱️ Duration: 2 weeks | 👥 Team Capacity: [Hours]" },
@@ -1679,6 +1696,7 @@ export const templates: Template[] = [
     description: "Annual budget planning with revenue projections and expense tracking",
     icon: "💵",
     color: "from-green-500/20 to-emerald-500/20",
+    category: "Operations & Finance",
     blocks: [
       { type: "heading1", content: "Budget & Financial Forecast - [Year]" },
       { type: "callout", content: "📊 Financial Planning: Department/Company budget allocation and projections" },
@@ -1732,6 +1750,7 @@ export const templates: Template[] = [
     description: "Recruitment strategy with job descriptions, interview process, and timeline",
     icon: "👨‍💼",
     color: "from-purple-500/20 to-pink-500/20",
+    category: "People & HR",
     blocks: [
       { type: "heading1", content: "Hiring Plan - [Year/Quarter]" },
       { type: "callout", content: "👥 Recruitment Strategy: Building the right team with structured hiring process" },
@@ -1799,6 +1818,7 @@ export const templates: Template[] = [
     description: "Complete launch plan with timeline, marketing, and go-live checklist",
     icon: "🚀",
     color: "from-yellow-500/20 to-orange-500/20",
+    category: "Project Management",
     blocks: [
       { type: "heading1", content: "Product Launch Plan - [Product Name]" },
       { type: "callout", content: "🎯 Launch Goal: Successfully launch [product] and achieve [metric]" },
@@ -1860,6 +1880,7 @@ export const templates: Template[] = [
     description: "Annual employee performance evaluation with goals, feedback, and ratings",
     icon: "⭐",
     color: "from-blue-500/20 to-cyan-500/20",
+    category: "People & HR",
     blocks: [
       { type: "heading1", content: "Performance Review - [Employee Name]" },
       { type: "text", content: "📅 Review Period: [Start Date] to [End Date] | 👔 Title: [Position] | 👨‍💼 Manager: [Manager Name]" },
@@ -1932,6 +1953,7 @@ export const templates: Template[] = [
     description: "Pitch deck outline with financial projections for investors and stakeholders",
     icon: "💎",
     color: "from-rose-500/20 to-pink-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "Investment Pitch - Series [A/B/C] Funding Round" },
       { type: "callout", content: "🎯 Raising: $[Amount] | 📊 Valuation: $[Amount] | 🎯 Use of Funds" },
@@ -2002,6 +2024,7 @@ export const templates: Template[] = [
     description: "Structured decision matrix for evaluating options and making smart choices",
     icon: "🤔",
     color: "from-green-500/20 to-teal-500/20",
+    category: "Leadership & Strategy",
     blocks: [
       { type: "heading1", content: "Decision Making Framework - [Decision Topic]" },
       { type: "callout", content: "🎯 Decision: Choose between [Option A] vs [Option B] vs [Option C]" },
@@ -2065,6 +2088,7 @@ export const templates: Template[] = [
     description: "Complete event management with timeline, budget, logistics, and checklist",
     icon: "🎉",
     color: "from-purple-500/20 to-violet-500/20",
+    category: "Operations & Finance",
     blocks: [
       { type: "heading1", content: "Event Planning - [Event Name]" },
       { type: "text", content: "📅 Date: [Date & Time] | 📍 Location: [Venue] | 👥 Expected Guests: [Number] | 💰 Budget: $[Amount]" },
@@ -2141,6 +2165,7 @@ export const templates: Template[] = [
     description: "Comprehensive customer onboarding journey and success playbook",
     icon: "👋",
     color: "from-cyan-500/20 to-blue-500/20",
+    category: "Customer Success",
     blocks: [
       { type: "heading1", content: "Customer Success Program - [Customer Name]" },
       { type: "text", content: "📅 Sign-up Date: [Date] | 💰 Contract Value: $[Amount] | 🎯 Success Criteria: [Metric]" },
