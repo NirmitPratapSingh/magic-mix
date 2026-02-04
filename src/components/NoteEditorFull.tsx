@@ -251,10 +251,10 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="text-center mb-8"
+                className="text-center mb-12"
               >
-                <span className="text-xs text-muted-foreground/50 bg-muted/50 px-3 py-1.5 rounded-full">
-                  Focus mode • Press <kbd className="px-1.5 py-0.5 bg-background rounded text-[10px] font-mono">Esc</kbd> to exit
+                <span className="text-xs text-muted-foreground bg-primary/10 px-4 py-2 rounded-full border border-primary/20 inline-block">
+                  ✨ Focus mode • Press <kbd className="px-2 py-1 bg-primary/20 rounded text-[10px] font-mono ml-1">Esc</kbd> to exit
                 </span>
               </motion.div>
             )}
@@ -264,15 +264,15 @@ const NoteEditorFull = ({ note, onUpdate, focusMode = false, onToggleFocusMode }
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-6"
+            className={`${focusMode ? 'mb-8' : 'mb-6'}`}
           >
             <input
               type="text"
               value={note.title}
               onChange={(e) => onUpdate({ title: e.target.value })}
               className={`w-full font-bold text-foreground bg-transparent border-none outline-none placeholder:text-muted-foreground/30 tracking-tight transition-all duration-300 ${
-                focusMode 
-                  ? 'text-5xl md:text-6xl text-center' 
+                focusMode
+                  ? 'text-6xl md:text-7xl text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent'
                   : 'text-4xl md:text-5xl'
               }`}
               placeholder="Untitled"
