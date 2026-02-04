@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, MoreHorizontal, Star, Share2, Clock, Focus, Minimize2, BookOpen } from "lucide-react";
 import NotionEditor from "./NotionEditor";
 import FloatingToolbar from "./FloatingToolbar";
-import IndexPanel from "./IndexPanel";
+import FloatingIndexSidebar from "./FloatingIndexSidebar";
 import { Note, NoteBlock } from "@/contexts/NotesContext";
 import { useHeadingIndex } from "@/hooks/useHeadingIndex";
 import { format } from "date-fns";
